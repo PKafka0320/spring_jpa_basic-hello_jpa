@@ -15,26 +15,26 @@ public class JpaMain {
         tx.begin();
 
         try {
-            //생성
+            /*생성*/
             //Member member = new Member();
             //member.setId(1L);
             //member.setName("HelloA");
             //em.persist(member);
 
-            //조회
+            /*조회*/
             //Member findMember = em.find(Member.class, 1L);
             //System.out.println("findMember.Id = " + findMember.getId());
             //System.out.println("findMember.Name = " + findMember.getName());
 
-            //삭제
+            /*삭제*/
             //Member findMember = em.find(Member.class, 1L);
             //em.remove(findMember);
 
-            //수정
+            /*수정*/
             //Member findMember = em.find(Member.class, 1L);
             //findMember.setName("HelloJPA");
 
-            //JPQL
+            /*JPQL*/
             //List<Member> result = em.createQuery("select m from Member as m", Member.class)
             //        .setFirstResult(1)
             //        .setMaxResults(8)
@@ -44,15 +44,37 @@ public class JpaMain {
             //    System.out.println("member = " + member);
             //}
 
-            //비영속
-            Member member = new Member();
-            member.setId(100L);
-            member.setName("HelloJPA");
+            /*비영속*/
+            //Member member = new Member();
+            //member.setId(100L);
+            //member.setName("HelloJPA");
 
-            //영속
-            System.out.println("Before");
-            em.persist(member);
-            System.out.println("After");
+            /*영속*/
+            //System.out.println("Before");
+            //em.persist(member);
+            //System.out.println("After");
+            //
+            //Member findMember = em.find(Member.class, 100L);
+            //System.out.println("findMember.Id = " + findMember.getId());
+            //System.out.println("findMember.Name = " + findMember.getName());
+
+            /*동일성 보장*/
+            //Member findMember1 = em.find(Member.class, 100L);
+            //Member findMember2 = em.find(Member.class, 100L);
+            //System.out.println("result = " + (findMember1 == findMember2));
+
+            /*엔티티 등록 (트랜잭션을 지원하는 쓰기 지연)*/
+            //Member member1 = new Member(150L, "A");
+            //Member member2 = new Member(160L, "B");
+            //
+            //em.persist(member1);
+            //em.persist(member2);
+            //System.out.println("=======================");
+
+            /*엔티티 수정 (변경감지)*/
+            //Member member = em.find(Member.class, 150L);
+            //member.setName("ZZZZZ");
+            //System.out.println("=======================");
 
             tx.commit();
         } catch (Exception e) {
